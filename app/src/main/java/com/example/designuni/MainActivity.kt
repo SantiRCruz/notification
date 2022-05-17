@@ -1,5 +1,6 @@
 package com.example.designuni
 
+import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -73,5 +74,17 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         binding.btnSignUp.setOnClickListener { sendNotification() }
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Exit")
+            .setMessage("Are you  sure you want to exit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes"){_,_ ->
+                finish()
+            }
+            .setNegativeButton("No",null)
+            .show()
     }
 }
